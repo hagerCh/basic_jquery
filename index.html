@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Jquery checkpoint</title>
+</head>
+<body>
+	<select id="font">
+		<option selected value="Arial">Arial</option>
+		<option value="Arial Black">Arial Black</option>
+		<option value="Comic Sans MS">Comic Sans MS</option>
+		<option value="Courier New">Courier New</option>
+	</select>
+	<select id="size">
+		<option selected value="14">14</option>
+		<option value="16">16</option>
+		<option value="18">18</option>
+		<option value="20">20</option>
+	</select>
+	<button id="bold" style="font-family: Lucida Console; font-size: 18px;">
+		<b>B</b>
+	</button>
+	<button id="italic" style="font-family: Lucida Console; font-size: 18px;">
+		<i>I</i>
+	</button>
+	<button id="underline" style="font-family: Lucida Console; font-size: 18px;">
+		<u>U</u>
+	</button>
+	<p id="paragraph">
+		We're going to make a program that looks like Microsoft Word.<br>
+		There will be one paragrah and a bunch of buttons.<br>
+		Each button will have an onclick attribute that will link to a different javascript function.  
+	</p>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$("#font").change(function(){
+		var s= $("#font").val()
+		$("#paragraph").css("font-family",s)
+	});
+
+	$("#size").change(function(){
+		var s= $("#size").val()
+		$("#paragraph").css("font-size",parseInt(s)+"px")
+	}); 
+
+	$("#bold").click(function(){
+		var weight= $("#paragraph").css("font-weight");
+		if (weight=="bold"||weight=="700"){
+			$("#paragraph").css("font-weight","normal")
+		}
+		else{
+			$("#paragraph").css("font-weight","bold")
+		}
+	});
+
+	$("#italic").click(function(){
+		if ($("#paragraph").css("font-style")=="italic"){
+			$("#paragraph").css("font-style","normal")
+		}
+		else{
+			$("#paragraph").css("font-style","italic")
+		}
+	});
+
+	$("#underline").click(function(){
+		var under = $("#paragraph").css("text-decoration")
+		if (under=="underline"|| under=="underline solid rgb(0, 0, 0)")
+			$("#paragraph").css("text-decoration","none")
+		else
+		$("#paragraph").css("text-decoration","underline")
+	});
+</script>
+</html>
